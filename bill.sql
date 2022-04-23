@@ -98,3 +98,24 @@ COMMIT;
 SELECT * FROM compra;
 -- Consultamos la tabla producto para validar que se vendieron los productos 1 y 2; el producto 8 no se vendió, por no tener stock suficiente.
 SELECT * FROM producto;
+-- 4.- Realizar las siguientes consultas:
+-- a. Deshabilitar el AUTOCOMMIT .
+\set AUTOCOMMIT off
+-- b. Insertar un nuevo cliente.
+
+INSERT INTO cliente(id, nombre, email)
+VALUES(11, 'usuario11', 'usuario11@hotmail.com');
+
+-- c. Confirmar que fue agregado en la tabla cliente.
+SELECT * FROM cliente;
+
+-- d. Realizar un ROLLBACK.
+ROLLBACK;
+
+-- e. Confirmar que se restauró la información, sin considerar la inserción del punto b.
+SELECT * FROM cliente;
+
+-- f. Habilitar de nuevo el AUTOCOMMIT.
+\set AUTOCOMMIT on
+
+
